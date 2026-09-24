@@ -31,7 +31,7 @@ bool write_ppm(
   myfile << width << " " << height << "\n" << "255" << "\n";
 
   for (int i = 0; i < height*width*num_channels; i++) {
-      myfile << (int)data[i] << " ";
+    myfile << (int)data[i] << " ";
   }
 
   myfile.close();
