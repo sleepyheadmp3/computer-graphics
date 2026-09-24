@@ -29,9 +29,10 @@ bool first_hit(
   double t_min;
 
   for (int i = 0; i < sizeof(objects); i++) {
-    if (objects[i]->intersect(ray, min_t, t, n) && (t >= min_t)) {
+    if ((t >= min_t) && objects[i]->intersect(ray, min_t, t, n)) {
       hit = true;
 
+      // update closest object hit
       if (!t_min || t < t_min) {
         t_min = t;
         hit_id = i;
