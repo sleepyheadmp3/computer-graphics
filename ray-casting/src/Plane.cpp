@@ -12,11 +12,11 @@ bool Plane::intersect(
 
 
   // demon == 0, aka ray is parallel
-  if (denom < 1e-6) {
+  if (denom < 1e-6 && denom > -1e-6) {
     return hit;
   }
 
-  t = (point - ray.origin).dot(normal) / denom;
+  t = (point.dot(normal) - ray.origin.dot(normal)) / denom;
   n = normal;
 
   if (t >= min_t) {

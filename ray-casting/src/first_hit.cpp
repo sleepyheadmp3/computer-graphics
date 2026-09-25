@@ -1,4 +1,5 @@
 #include "first_hit.h"
+#include <limits>
 using namespace std;
 
 bool first_hit(
@@ -26,16 +27,20 @@ bool first_hit(
   // Returns true iff a hit was found
 
   bool hit = false;
-  double t_min;
+  double t_min = numeric_limits<double>::infinity();
+  double t_1;
+  Eigen::Vector3d n_1;
 
-  for (int i = 0; i < sizeof(objects); i++) {
-    if ((t >= min_t) && objects[i]->intersect(ray, min_t, t, n)) {
+  for (int i = 0; i < objects.size(); i++) {
+    if (objects[i]->intersect(ray, min_t, t_1, n_1) && (t_1 >= min_t)) {
       hit = true;
 
       // update closest object hit
-      if (!t_min || t < t_min) {
-        t_min = t;
+      if (t_1 < t_min) {
+        t_min = t_1;
         hit_id = i;
+        t = t_min;
+        n = n_1;
       }
     }
   }
