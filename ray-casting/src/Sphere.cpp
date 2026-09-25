@@ -33,17 +33,19 @@ bool Sphere::intersect(
   double t_1 = (-b + sqrt(discriminant)) / a;
   double t_2 = (-b - sqrt(discriminant)) / a;
 
-  if (t_1 >= 0 && t_2 >= 0) {
-    if (t_1 < t_2) {
-      t = t_1;
-    }
-    else {
-      t = t_2;
-    }
-    intersect = true;
-    Eigen::Vector3d p = ray.origin + (t * ray.direction);
-    n = (p - center) / radius;
-  } 
+  if (t_2 >= min_t) {
+    t = t_2;
+  }
+  else if (t_1 >= min_t) {
+    t = t_1;
+  }
+  else {
+    return intersect;
+  }
+
+  intersect = true;
+  Eigen::Vector3d p = ray.origin + (t * ray.direction);
+  n = (p - center) / radius;
 
   return intersect;
 }
