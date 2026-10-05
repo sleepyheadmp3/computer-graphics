@@ -1,17 +1,15 @@
 #include "PointLight.h"
+#include <cmath>
 
 void PointLight::direction(
   const Eigen::Vector3d & q, Eigen::Vector3d & d, double & max_t) const
 {
+    // vector from q -> p
+    d = p - q;
+    max_t = sqrt((d[0] * d[0]) + (d[1] * d[1]) + (d[2] * d[2]));
 
-  // Given a query point return the direction _toward_ the Light.
-    //
-    // Input:
-    //   q  3D query point in space
-    // Outputs:
-    //    d  3D direction from point toward light as a vector.
-    //    max_t  parametric distance from q along d to light (may be inf)
+    if (max_t != 0) {
+      d = d / max_t;   // aka normalize
+    }
 
-
-    
 }
