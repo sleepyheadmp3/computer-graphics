@@ -8,10 +8,180 @@
     "height": 1,
     "width": 1.7777777778
   },
+
   "materials": [
+    {
+      "name": "pink matte",
+      "ka": [1, 0.60, 0.80],
+      "kd": [1, 0.60, 0.80],
+      "ks": [0.3,0.3,0.3],
+      "km": [0,0.0,0.0],
+      "phong_exponent": 20
+    },
+    {
+      "name": "red matte",
+      "ka": [1, 0.0, 0.30],
+      "kd": [1, 0.0, 0.30],
+      "ks": [0.3,0.3,0.3],
+      "km": [0,0.0,0.0],
+      "phong_exponent": 20
+    },
+    {
+      "name": "black eyes",
+      "ka": [0, 0, 0],
+      "kd": [0, 0, 0],
+      "ks": [0.3,0.3,0.3],
+      "km": [0,0.0,0.0],
+      "phong_exponent": 20
+    },
+    {
+      "name": "white eyes",
+      "ka": [1, 1, 1],
+      "kd": [1, 1, 1],
+      "ks": [0.3,0.3,0.3],
+      "km": [0,0.0,0.0],
+      "phong_exponent": 20
+    },
+    {
+      "name": "blue bg",
+      "ka": [0.2, 0.5, 0.9],
+      "kd": [0.2, 0.5, 0.9],
+      "ks": [0.3,0.3,0.3],
+      "km": [0.05,0.05,0.05],
+      "phong_exponent": 500
+    }
   ],
+
   "lights":[
+    {
+      "type": "directional",
+      "direction": [0.5,0,-1],
+      "color": [0.55,0.55,0.55]
+    },
+    {
+      "type": "directional",
+      "direction": [-0.5,0,-1],
+      "color": [0.2,0.2,0.2]
+    },
+    {
+      "type": "directional",
+      "direction": [0,-1,-0.5],
+      "color": [0.2,0.2,0.2]
+    },
+    {
+      "type": "directional",
+      "direction": [1,0,-0.5],
+      "color": [0.15,0.15,0.15]
+    }
   ],
+
   "objects": [
+    {
+      "type": "sphere",
+      "material": "pink matte",
+      "center": [0,0,0],
+      "radius": 0.5
+    },
+    {
+      "type": "sphere",
+      "material": "red matte",
+      "center": [-0.25,-0.4,0.25],
+      "radius": 0.2
+    },
+    {
+      "type": "sphere",
+      "material": "red matte",
+      "center": [0.25,-0.4,-0.25],
+      "radius": 0.2
+    },
+    {
+      "type": "sphere",
+      "material": "pink matte",
+      "center": [-0.5,0.15,0.25],
+      "radius": 0.2
+    },
+    {
+      "type": "sphere",
+      "material": "pink matte",
+      "center": [0.5,-0.1,-0.2],
+      "radius": 0.2
+    },
+
+    {
+      "type": "sphere",
+      "material": "black eyes",
+      "center": [-0.125,0.1,0.44],
+      "radius": 0.05
+    },
+    {
+      "type": "sphere",
+      "material": "black eyes",
+      "center": [-0.125,0.12,0.45],
+      "radius": 0.05
+    },
+    {
+      "type": "sphere",
+      "material": "black eyes",
+      "center": [-0.125,0.14,0.45],
+      "radius": 0.05
+    },
+    {
+      "type": "sphere",
+      "material": "black eyes",
+      "center": [-0.125,0.16,0.44],
+      "radius": 0.05
+    },
+    {
+      "type": "sphere",
+      "material": "white eyes",
+      "center": [-0.125,0.16,0.47],
+      "radius": 0.03
+    },
+
+    {
+      "type": "sphere",
+      "material": "black eyes",
+      "center": [0.125,0.1,0.44],
+      "radius": 0.05
+    },
+    {
+      "type": "sphere",
+      "material": "black eyes",
+      "center": [0.125,0.12,0.45],
+      "radius": 0.05
+    },
+    {
+      "type": "sphere",
+      "material": "black eyes",
+      "center": [0.125,0.14,0.45],
+      "radius": 0.05
+    },
+    {
+      "type": "sphere",
+      "material": "black eyes",
+      "center": [0.125,0.16,0.44],
+      "radius": 0.05
+    },
+    {
+      "type": "sphere",
+      "material": "white eyes",
+      "center": [0.125,0.16,0.47],
+      "radius": 0.03
+    },
+
+    {
+      "type": "sphere",
+      "material": "red matte",
+      "center": [0,0,0.48],
+      "radius": 0.03
+    },
+
+
+    {
+      "type": "plane",
+      "material": "blue bg",
+      "point": [0,0,-20],
+      "normal": [0,0,1]
+    }
   ]
 }
