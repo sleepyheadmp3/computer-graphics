@@ -1,4 +1,5 @@
 #include "insert_triangle_into_box.h"
+#include <algorithm>
 
 void insert_triangle_into_box(
   const Eigen::RowVector3d & a,
@@ -6,9 +7,9 @@ void insert_triangle_into_box(
   const Eigen::RowVector3d & c,
   BoundingBox & B)
 {
-  ////////////////////////////////////////////////////////////////////////////
-  // Add your code here
-  ////////////////////////////////////////////////////////////////////////////
+  for (int i = 0; i < 3; i++) {
+    B.max_corner(i) = std::max({a(i), b(i), c(i), B.max_corner(i)});
+    B.min_corner(i) = std::min({a(i), b(i), c(i), B.min_corner(i)});
 }
 
 

@@ -1,5 +1,6 @@
 #include "ray_intersect_box.h"
 #include <iostream>
+#include <algorithm>
 #include <limits>
 
 
@@ -54,10 +55,8 @@ bool ray_intersect_box(
   }
 
   // find intersection of intervals
-  double t_max = std::max(t_xmin, t_ymin);
-  t_max = std::max(t_max, t_zmin);
-  double t_min = std::min(t_xmax, t_ymax);
-  t_min = std::min(t_min, t_zmax);
+  double t_max = std::max({t_xmin, t_ymin, t_zmin});
+  double t_min = std::min({t_xmax, t_ymax, t_zmax});
 
   if (t_max <= t_min && t_min >= min_t && t_max <= max_t) {
     return true;
