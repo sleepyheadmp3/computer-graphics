@@ -1,4 +1,5 @@
 #include "ray_intersect_triangle.h"
+#include <Eigen/Geometry>
 
 bool ray_intersect_triangle(
   const Ray & ray,

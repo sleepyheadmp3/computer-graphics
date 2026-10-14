@@ -7,11 +7,11 @@ void insert_box_into_box(
   // inserts A into B
 
   for (int i = 0; i < 3; i++) {
-    if (A.min_corner(0) < B.min_corner(0)) {
-      B.min_corner(0) = A.min_corner(0);
+    if (A.min_corner(i) < B.min_corner(i)) {
+      B.min_corner(i) = A.min_corner(i);
     }
-    if (A.max_corner(0) > B.max_corner(0)) {
-      B.max_corner(0) = A.max_corner(0);
+    if (A.max_corner(i) > B.max_corner(i)) {
+      B.max_corner(i) = A.max_corner(i);
     }
   }
 }

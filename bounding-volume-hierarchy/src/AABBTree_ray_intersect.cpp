@@ -1,5 +1,4 @@
 #include "AABBTree.h"
-#include "ray_intersect_box.h"
 
 // See AABBTree.h for API
 bool AABBTree::ray_intersect(

@@ -7,9 +7,24 @@ void nearest_neighbor_brute_force(
   int & I,
   double & sqrD)
 {
-  ////////////////////////////////////////////////////////////////////////////
-  // Replace with your code here:
-  I = -1;
-  sqrD = 0;
-  ////////////////////////////////////////////////////////////////////////////
+
+double min_distance = std::numeric_limits<double>::infinity();
+double distance;
+double min_i = -1;
+
+for (int i = 0; i < points.rows(); i++) {
+  double x = points(i, 0) - query[0];
+  double y = points(i, 1) - query[1];
+  double z = points(i, 2) - query[2];
+  distance = (x * x) + (y * y) + (z * z);
+  
+  if (distance < min_distance) {
+    min_distance = distance;
+    min_i = i;
+  }
+}
+
+  I = min_i;
+  sqrD = min_distance;
+  
 }
