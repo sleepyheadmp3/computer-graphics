@@ -4,9 +4,12 @@
 // the given amount.
 mat4 rotate_about_y(float theta)
 {
-  /////////////////////////////////////////////////////////////////////////////
-  // Replace with your code 
-  return identity();
-  /////////////////////////////////////////////////////////////////////////////
+  // reference: https://en.wikipedia.org/wiki/Rotation_matrix
+  return mat4(
+    cos(theta), 0, -sin(theta), 0,
+    0, 1, 0, 0,
+    sin(theta), 0, cos(theta), 0,
+    0, 0, 0, 1
+  );
 }
 

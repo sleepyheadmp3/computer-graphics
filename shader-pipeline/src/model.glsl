@@ -9,8 +9,14 @@
 // expects: identity, rotate_about_y, translate, PI
 mat4 model(bool is_moon, float time)
 {
-  /////////////////////////////////////////////////////////////////////////////
-  // Replace with your code 
+  if (is_moon) {
+    vec3 x_offset = vec3(10, 0, 0);
+
+    // speed = 2 pi r / constant
+    float theta = (PI / 3.0) * time;
+
+    return rotate_about_y(theta) * translate(x_offset);
+  }
+
   return identity();
-  /////////////////////////////////////////////////////////////////////////////
 }
