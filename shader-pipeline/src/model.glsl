@@ -10,10 +10,10 @@
 mat4 model(bool is_moon, float time)
 {
   if (is_moon) {
-    vec3 x_offset = vec3(10, 0, 0);
+    vec3 x_offset = vec3(2, 0, 0);
 
-    // speed = 2 pi r / constant
-    float theta = (PI / 3.0) * time;
+    // speed = 2 pi r / 4 sec
+    float theta = (M_PI / 2.0) * time;
 
     return rotate_about_y(theta) * translate(x_offset);
   }

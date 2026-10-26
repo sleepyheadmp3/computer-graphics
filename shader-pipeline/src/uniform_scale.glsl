@@ -4,7 +4,11 @@
 // directions.
 mat4 uniform_scale(float s)
 {
-  vec4 scalar = vec4(s, s, s, 1);
-  return identity() * scalar;
+  return mat4(
+    s, 0, 0, 0,
+    0, s, 0, 0,
+    0, 0, s, 0,
+    0, 0, 0, 1
+  );
 }
 

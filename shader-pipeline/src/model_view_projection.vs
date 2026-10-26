@@ -7,7 +7,8 @@
 //                  4x4 view transformation matrix: transforms "world
 //                  coordinates" into camera coordinates.
 uniform mat4 view;
-//                  4x4 perspective projection matrix: transforms
+//                  4x4 perspective projection matrix: transforms camera
+//                  coordinates into canonical view volume
 uniform mat4 proj;
 //                                number of seconds animation has been running
 uniform float animation_seconds;
@@ -21,10 +22,15 @@ in vec3 pos_vs_in;
 //                   coordinates
 out vec4 pos_cs_in; 
 // expects: PI, model
+
 void main()
 {
-  /////////////////////////////////////////////////////////////////////////////
-  // Replace with your code 
   pos_cs_in = vec4(pos_vs_in,1.0);
-  /////////////////////////////////////////////////////////////////////////////
+
+  if (is_moon) {
+    pos_cs_in = uniform_scale(0.3) * pos_cs_in;
+    pos_cs_in = model(is_moon, animation_seconds) * pos_cs_in;
+  }
+
+  pos_cs_in = proj * view * pos_cs_in;
 }
