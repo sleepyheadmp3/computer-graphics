@@ -8,8 +8,13 @@
 // expects: random2.glsl, PI.glsl
 vec3 random_direction( vec3 seed)
 {
-  /////////////////////////////////////////////////////////////////////////////
-  // Replace with your code 
-  return vec3(1,0,0);
-  /////////////////////////////////////////////////////////////////////////////
+  //reference: https://corysimon.github.io/articles/uniformdistn-on-sphere/
+  vec2 random = random2(seed);
+  float theta = 2.0 * M_PI * random.x;
+  float phi = acos(1.0 - 2.0 * random.y);
+  float x = sin(phi) * cos(theta);
+  float y = sin(phi) * sin(theta);
+  float z = cos(phi);
+
+  return vec3(x, y, z);
 }

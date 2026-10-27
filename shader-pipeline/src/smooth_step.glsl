@@ -7,16 +7,19 @@
 // Returns filtered output value
 float smooth_step( float f)
 {
-  /////////////////////////////////////////////////////////////////////////////
-  // Replace with your code 
-  return f;
-  /////////////////////////////////////////////////////////////////////////////
+  // reference: http://en.wikipedia.org/wiki/Smoothstep
+  if (f <= 0) {
+    return 0.0;
+  }
+
+  if (f >= 1) {
+    return 1.0;
+  }
+
+  return f * f * (3.0 - 2.0 * f);
 }
 
 vec3 smooth_step( vec3 f)
 {
-  /////////////////////////////////////////////////////////////////////////////
-  // Replace with your code 
-  return f;
-  /////////////////////////////////////////////////////////////////////////////
+  return normalize(vec3(smooth_step(f.x), smooth_step(f.y), smooth_step(f.z)));
 }

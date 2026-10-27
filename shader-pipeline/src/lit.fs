@@ -34,7 +34,7 @@ void main()
   vec3 kd;
   vec3 ks;
   float p;
-  vec3 n = normal_fs_in;
+  vec3 n = normalize(normal_fs_in);
   vec3 v = normalize(-(view_pos_fs_in.xyz));
   vec3 l = normalize(light_pos - view_pos_fs_in).xyz;
 
