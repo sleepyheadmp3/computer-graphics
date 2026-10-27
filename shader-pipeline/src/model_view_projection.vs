@@ -28,7 +28,6 @@ void main()
   pos_cs_in = vec4(pos_vs_in,1.0);
 
   if (is_moon) {
-    pos_cs_in = uniform_scale(0.3) * pos_cs_in;
     pos_cs_in = model(is_moon, animation_seconds) * pos_cs_in;
   }
 

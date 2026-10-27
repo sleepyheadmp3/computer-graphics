@@ -15,21 +15,28 @@ in vec4 pos_es_in[];
 // Outputs:
 //                   projected, view, and model transformed 3D position
 out vec4 pos_fs_in;
-//                        view and model transformed 3D position
+//                      view and model transformed 3D position
 out vec4 view_pos_fs_in;
 //                      view and model transformed 3D normal
 out vec3 normal_fs_in;
 //                      3D position _before_ applying model, view or projection
 //                      transformations (e.g., point on unit sphere)
 out vec3 sphere_fs_in;
-// expects: interpolat, model, 
+// expects: interpolate, model, 
 void main()
 {
-  /////////////////////////////////////////////////////////////////////////////
-  // Replace with your code 
-  pos_fs_in = interpolate(gl_TessCoord, pos_es_in[0], pos_es_in[1], pos_es_in[2]);
+  vec4 p = interpolate(gl_TessCoord, pos_es_in[0], pos_es_in[1], pos_es_in[2]);
+  sphere_fs_in = normalize(p.xyz);
+
+  // add 1 because point
+  view_pos_fs_in = view * model(is_moon, animation_seconds) * vec4(sphere_fs_in, 1.0);
+
+  normal_fs_in = normalize(view_pos_fs_in).xyz;
+
+  pos_fs_in = proj * view_pos_fs_in;
+
   gl_Position = pos_fs_in;
-  /////////////////////////////////////////////////////////////////////////////
+  // pos_fs_in = interpolate(gl_TessCoord, pos_es_in[0], pos_es_in[1], pos_es_in[2]);
 }
 
 

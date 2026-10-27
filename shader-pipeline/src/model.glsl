@@ -14,8 +14,7 @@ mat4 model(bool is_moon, float time)
 
     // speed = 2 pi r / 4 sec
     float theta = (M_PI / 2.0) * time;
-
-    return rotate_about_y(theta) * translate(x_offset);
+    return rotate_about_y(theta) * translate(x_offset) * uniform_scale(0.3);
   }
 
   return identity();
