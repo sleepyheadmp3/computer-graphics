@@ -20,10 +20,19 @@ vec3 blinn_phong(
   vec3 v,
   vec3 l)
 {
-  /////////////////////////////////////////////////////////////////////////////
-  // Replace with your code 
-  return vec3(1,1,1);
-  /////////////////////////////////////////////////////////////////////////////
+  // L = ambient + lambertian + specular
+  vec3 rgb = ka * 0.1;
+
+  // lambertian shading: kd * max(0, n.dot(l))
+  rgb += kd * max(0, dot(n, l));
+
+  // specular shading: ks * max(0, cos(n, h))^p
+  // h = halfway vector btwn point -> light and point -> viewer
+  vec3 h = normalize(l + v);
+
+  rgb += ks * pow(max(0, dot(n, h)), p);
+
+  return rgb;
 }
 
 

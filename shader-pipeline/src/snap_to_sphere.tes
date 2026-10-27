@@ -28,10 +28,12 @@ void main()
   vec4 p = interpolate(gl_TessCoord, pos_es_in[0], pos_es_in[1], pos_es_in[2]);
   sphere_fs_in = normalize(p.xyz);
 
-  // add 1 because point
-  view_pos_fs_in = view * model(is_moon, animation_seconds) * vec4(sphere_fs_in, 1.0);
+  mat4 modeled = model(is_moon, animation_seconds);
 
-  normal_fs_in = normalize(view_pos_fs_in).xyz;
+  // add 1 because point
+  view_pos_fs_in = view * modeled * vec4(sphere_fs_in, 1.0);
+
+  normal_fs_in = normalize((view * modeled * vec4(sphere_fs_in, 0.0)).xyz);
 
   pos_fs_in = proj * view_pos_fs_in;
 
