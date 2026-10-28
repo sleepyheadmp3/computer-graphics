@@ -21,5 +21,5 @@ float smooth_step( float f)
 
 vec3 smooth_step( vec3 f)
 {
-  return normalize(vec3(smooth_step(f.x), smooth_step(f.y), smooth_step(f.z)));
+  return vec3(smooth_step(f.x), smooth_step(f.y), smooth_step(f.z));
 }
