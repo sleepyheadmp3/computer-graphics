@@ -9,9 +9,23 @@
 float bump_height( bool is_moon, vec3 s)
 {
   if (is_moon) {
-    return 0.1 * improved_perlin_noise(s * 6.7);
+    return 0.1 * improved_perlin_noise(s * 3.0);
   }
   else {
-    return 0.1 * improved_perlin_noise(s * 5.0);
+    // if (s.x < 0.5 && s.y > 0.5) {
+    //   return 0.1 * improved_perlin_noise(s * 2.0);
+    // }
+    float p_noise = 0.5 + 0.5 * improved_perlin_noise(3.0 * s);
+
+    // land is raised in same areas that are colored green
+    float land = (p_noise - 0.5) / 0.06;
+    if (land > 1.0) {
+      land = 1.0;
+    }
+    if (land < 0.0) {
+      land = 0.0;
+    }
+
+    return 0.1 * land;
   }
 }
