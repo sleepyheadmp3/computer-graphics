@@ -8,15 +8,22 @@
 // Returns filtered output value
 float improved_smooth_step( float f)
 {
-  /////////////////////////////////////////////////////////////////////////////
-  // Replace with your code 
-  return f;
-  /////////////////////////////////////////////////////////////////////////////
+  // reference: fade function from https://adrianb.io/2014/08/09/perlinnoise.html
+  if (f <= 0) {
+    return 0.0;
+  }
+
+  if (f >= 1) {
+    return 1.0;
+  }
+
+  // 6t^5 - 15t^4 + 10t^3
+  return f * f * f * (f * (f * 6 - 15) + 10);
 }
+
 vec3 improved_smooth_step( vec3 f)
 {
-  /////////////////////////////////////////////////////////////////////////////
-  // Replace with your code 
-  return f;
-  /////////////////////////////////////////////////////////////////////////////
+  return vec3(improved_smooth_step(f.x), 
+    improved_smooth_step(f.y), 
+    improved_smooth_step(f.z));
 }
