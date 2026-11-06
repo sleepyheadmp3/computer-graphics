@@ -14,11 +14,7 @@ bool write_obj(
 {
   // reference: https://en.wikipedia.org/wiki/Wavefront_.obj_file
   // Write a triangle or quad mesh to a .obj file
-//
-// Inputs:
-//   filename  path to .obj file
 
-// Returns true if write was successful
   assert((F.size() == 0 || F.cols() == 3 || F.cols() == 4) && "F must have 3 or 4 columns");
 
   std::ofstream obj_file;
@@ -77,5 +73,9 @@ bool write_obj(
 
 
   obj_file.close();
+  
+  if (!obj_file) {
+    return false;
+  }
   return true;
 }
