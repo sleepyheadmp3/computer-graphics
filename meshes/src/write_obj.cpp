@@ -12,8 +12,8 @@ bool write_obj(
   const Eigen::MatrixXd & NV,
   const Eigen::MatrixXi & NF)
 {
-  // reference: https://en.wikipedia.org/wiki/Wavefront_.obj_file
   // Write a triangle or quad mesh to a .obj file
+  // reference: https://en.wikipedia.org/wiki/Wavefront_.obj_file
 
   assert((F.size() == 0 || F.cols() == 3 || F.cols() == 4) && "F must have 3 or 4 columns");
 
