@@ -14,6 +14,6 @@ Eigen::RowVector3d triangle_area_normal(
 
   // length of parallelogram
   Eigen::RowVector3d n = e1.cross(e2);
-  
+
   return n * 0.5;
 }

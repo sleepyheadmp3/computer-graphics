@@ -6,22 +6,28 @@ void per_vertex_normals(
   const Eigen::MatrixXi & F,
   Eigen::MatrixXd & N)
 {
-  N = Eigen::MatrixXd::Zero(V.rows(),3);
   // Compute per vertex normals for a triangle mesh by computing the area-weighted
   // average of normals at incident faces.
-//
-// Inputs:
-//   V  #V by 3 list of vertex positions
-//   F  #F by 3 list of mesh triangle indices into V
-// Outputs:
-//   N  #V by 3 list of per-face unit normal vectors
 
-  
+  N = Eigen::MatrixXd::Zero(V.rows(),3);
 
+  // for each face, add area normal to running sum for each vertex
+  for (int i = 0; i < F.rows(); i++) {
+    int v0 = F(i, 0);
+    int v1 = F(i, 1);
+    int v2 = F(i, 2);
 
+    Eigen::RowVector3d area = triangle_area_normal(V.row(v0), V.row(v1), V.row(v2));
 
+    N.row(v0) += area;
+    N.row(v1) += area;
+    N.row(v2) += area;
+  }
 
-
-
-
+  // normalize to get unit normals
+  for (int i = 0; i < N.rows(); i++) {
+    if (N.row(i).norm() != 0) {
+      N.row(i).normalize();
+    }
+  }
 }
