@@ -12,15 +12,6 @@ void catmull_clark(
 {
   // Conduct num_iters iterations of Catmull-Clark subdivision on a **pure quad**
   // mesh (V,F).
-  //
-  // Inputs:
-  //   V  #V by 3 list of vertex positions
-  //   F  #F by 4 list of quad mesh indices into V
-  //   num_iters  number of iterations
-  // Outputs:
-  //   SV  #SV by 3 list of vertex positions
-  //   SF  #SF by 4 list of quad mesh indices into SV
-  // 
 
   int v_count = V.rows();
   int f_count = F.rows();
